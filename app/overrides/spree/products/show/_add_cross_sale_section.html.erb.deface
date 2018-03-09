@@ -1,0 +1,3 @@
+<!-- insert_after '[data-hook="product_right_part"]' -->
+
+<%= render partial: 'spree/shared/cross_sale_products' %>

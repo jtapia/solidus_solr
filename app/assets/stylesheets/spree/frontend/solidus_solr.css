@@ -1,0 +1,43 @@
+/*
+ *= require spree/frontend
+ *= require_tree .
+*/
+
+#up-sale-products a.info {
+  border-bottom: 1px solid #d9d9db;
+  color: #BBBBBB;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  height: 35px;
+  margin-top: 5px;
+  overflow: hidden;
+  text-align: center;
+}
+
+#up-sale-products .up-sale-product-product__image {
+  background-color: #FFFFFF;
+  border: 1px solid #d9d9db;
+  min-height: 110px;
+  padding: 5px;
+  text-align: center;
+}
+
+#up-sale-products .up-sale-product-product {
+  margin-bottom: 10px;
+}
+
+#up-sale-products .up-sale-product-title {
+  border-bottom: 1px solid #d9d9db;
+  color: #404042;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+#up-sale-products span.price {
+  color: #252525;
+  display: block;
+  font-size: 16px;
+  padding-top: 5px;
+  text-align: center;
+}

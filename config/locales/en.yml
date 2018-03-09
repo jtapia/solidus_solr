@@ -1,0 +1,8 @@
+en:
+  spree:
+    up_sale:
+      title: Up sale recommendations
+    cross_sale:
+      title: Cross sale recommendations
+    product:
+      view_product: View Product

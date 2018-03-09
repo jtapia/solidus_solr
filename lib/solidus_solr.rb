@@ -1,0 +1,6 @@
+require 'solidus'
+require 'solidus_support'
+require 'deface'
+require 'sunspot/rails'
+require 'sunspot/rails/railtie'
+require 'solidus_solr/engine'
