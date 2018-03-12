@@ -34,10 +34,6 @@ require 'spree/testing_support/url_helpers'
 require 'spree/api/testing_support/helpers'
 require 'spree/testing_support/preferences'
 require 'spree/api/testing_support/setup'
-# require 'sunspot/rails/spec_helper'
-# require 'sunspot-rails-tester'
-
-# require_relative 'support/sunspot'
 
 # Requires factories defined in lib/solidus_solr/factories.rb
 require 'solidus_solr/factories'
