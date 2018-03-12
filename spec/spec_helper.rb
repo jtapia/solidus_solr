@@ -13,11 +13,13 @@ end
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
-require File.expand_path('../dummy/config/environment.rb', __FILE__)
+require File.expand_path('dummy/config/environment.rb', __dir__)
 
+require 'solidus_frontend'
 require 'rspec/rails'
 require 'database_cleaner'
 require 'ffaker'
+require 'sunspot_test/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -29,31 +31,36 @@ require 'spree/testing_support/capybara_ext'
 require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
+require 'spree/api/testing_support/helpers'
+require 'spree/testing_support/preferences'
+require 'spree/api/testing_support/setup'
+# require 'sunspot/rails/spec_helper'
+# require 'sunspot-rails-tester'
+
+# require_relative 'support/sunspot'
 
 # Requires factories defined in lib/solidus_solr/factories.rb
 require 'solidus_solr/factories'
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   # Infer an example group's spec type from the file location.
   config.infer_spec_type_from_file_location!
+  config.infer_base_class_for_anonymous_controllers = false
+  config.use_transactional_fixtures = false
 
   # == URL Helpers
-  #
-  # Allows access to Spree's routes in specs:
-  #
-  # visit spree.admin_path
-  # current_path.should eql(spree.products_path)
+  config.include FactoryBot::Syntax::Methods
+  config.include Spree::Api::TestingSupport::Helpers, type: :controller
+  config.extend  Spree::Api::TestingSupport::Setup, type: :controller
+  config.include Spree::TestingSupport::ControllerRequests, type: :controller
   config.include Spree::TestingSupport::UrlHelpers
+  config.extend Spree::TestingSupport::AuthorizationHelpers::Request, type: :request
+  config.include Spree::TestingSupport::Preferences, type: :controller
+  config.include Spree::TestingSupport::Preferences, type: :model
 
   # == Mock Framework
-  #
-  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
   config.mock_with :rspec
   config.color = true
 
@@ -64,24 +71,6 @@ RSpec.configure do |config|
   # to cleanup after each test instead.  Without transactional fixtures set to false the records created
   # to setup a test will be unavailable to the browser, which runs under a separate server instance.
   config.use_transactional_fixtures = false
-
-  # Ensure Suite is set to use transactions for speed.
-  config.before :suite do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with :truncation
-  end
-
-  # Before each spec check if it is a Javascript test and switch between using database transactions or not where necessary.
-  config.before :each do
-    DatabaseCleaner.strategy = RSpec.current_example.metadata[:js] ? :truncation : :transaction
-    DatabaseCleaner.start
-  end
-
-  # After each spec clean the database.
-  config.after :each do
-    DatabaseCleaner.clean
-  end
-
   config.fail_fast = ENV['FAIL_FAST'] || false
   config.order = 'random'
 end
