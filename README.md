@@ -1,7 +1,7 @@
 SolidusSolr
 ===========
-
-Introduction goes here.
+# Solidus Newsletter
+[![Build Status](https://travis-ci.org/jtapia/solidus_solr.svg?branch=master)](https://travis-ci.org/jtapia/solidus_solr)<br />
 
 Installation
 ------------
