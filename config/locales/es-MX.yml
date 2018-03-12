@@ -1,0 +1,8 @@
+es-MX:
+  spree:
+    up_sale:
+      title: Productos que te pueden interesar
+    cross_sale:
+      title: Productos comprados juntos
+    product:
+      view_product: Ver Producto

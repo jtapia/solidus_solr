@@ -1,22 +1,34 @@
-SolidusSolr
+# Solidus Solr
 ===========
 # Solidus Newsletter
 [![Build Status](https://travis-ci.org/jtapia/solidus_solr.svg?branch=master)](https://travis-ci.org/jtapia/solidus_solr)<br />
 
-Installation
-------------
+Basic Overview
+-----
 
-Add solidus_solr to your Gemfile:
+Add a the full-search ability to your Solidus site.
+
+Setup
+-----
+
+Add this extension to your Gemfile:
 
 ```ruby
-gem 'solidus_solr'
+gem 'solidus_newsletter', github: 'jtapia/solidus_newsletter'
 ```
 
-Bundle your dependencies and run the installation generator:
+Then run:
 
-```shell
-bundle
+```
 bundle exec rails g solidus_solr:install
+```
+
+Using the recommendations forms
+-----
+
+```ruby
+<%= render partial: 'spree/shared/up_sale_products' %>
+<%= render partial: 'spree/shared/cross_sale_products' %>
 ```
 
 Testing
@@ -37,3 +49,5 @@ require 'solidus_solr/factories'
 ```
 
 Copyright (c) 2018 [name of extension creator], released under the New BSD License
+
+
