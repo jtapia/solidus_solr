@@ -3,7 +3,7 @@ Spree::Product.class_eval do
   # You can add/remove the options that you need to the searchable list
   searchable do
     string :name, stored: true
-    text :description, stored: true do
+    text :description, stored: true, more_like_this: true do
       [name, description, meta_description, meta_keywords].join(' ')
     end
 
@@ -21,9 +21,9 @@ Spree::Product.class_eval do
       variant_ids = Spree::LineItem.where(order_id: line_items.
                                     joins(:order).
                                     where.not(spree_orders: { completed_at: nil }).
+                                    where.not(variant_id: variants.map(&:id)).
                                     map(&:order_id)).
                                     select('distinct variant_id').
-                                    reject { |li| li.variant_id == self.id }.
                                     map(&:variant_id)
       Spree::Variant.where(id: variant_ids).
                      select('distinct product_id').

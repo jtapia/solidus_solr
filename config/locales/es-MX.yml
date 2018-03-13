@@ -4,5 +4,7 @@ es-MX:
       title: Productos que te pueden interesar
     cross_sale:
       title: Productos comprados juntos
+    similar_products:
+      title: Productos similares
     product:
       view_product: Ver Producto
