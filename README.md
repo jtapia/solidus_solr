@@ -12,17 +12,24 @@ Setup
 Add this extension to your Gemfile:
 
 ```ruby
-gem 'solidus_newsletter', github: 'jtapia/solidus_newsletter'
+gem 'solidus_solr', github: 'jtapia/solidus_solr'
 ```
 
 Then run:
 
-```
+```ruby
 bundle exec rails g solidus_solr:install
+```
+
+Add the products to solr indexer, run:
+``ruby
+Spree::Product.index
+Sunspot.commit
 ```
 
 Using the recommendations forms
 -----
+
 
 ```ruby
 <%= render partial: 'spree/shared/up_sale_products' %>

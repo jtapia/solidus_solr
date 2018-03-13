@@ -8,7 +8,8 @@ Spree::Product.class_eval do
     end
 
     integer :taxon_ids, stored: true, multiple: true do
-      taxons.map(&:id)
+      return Rails.logger.warn(Spree.t(:warning)) unless SolidusSolr::Config.taxonomies
+      taxons.where(taxonomy: Spree::Taxonomy.where(name: SolidusSolr::Config.taxonomies)).map(&:id)
     end
 
     integer :popularity, stored: true do
@@ -21,9 +22,9 @@ Spree::Product.class_eval do
       variant_ids = Spree::LineItem.where(order_id: line_items.
                                     joins(:order).
                                     where.not(spree_orders: { completed_at: nil }).
+                                    where.not(variant_id: variants.map(&:id)).
                                     map(&:order_id)).
                                     select('distinct variant_id').
-                                    reject { |li| li.variant_id == self.id }.
                                     map(&:variant_id)
       Spree::Variant.where(id: variant_ids).
                      select('distinct product_id').
