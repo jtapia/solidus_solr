@@ -26,6 +26,7 @@ end
 group :development, :test do
   gem 'i18n-tasks', '~> 0.9' if branch == 'master'
   gem 'pry-rails'
+  gem 'sunspot_solr'
 end
 
 gemspec
