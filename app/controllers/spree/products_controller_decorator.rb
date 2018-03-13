@@ -1,7 +1,7 @@
 Spree::ProductsController.class_eval do
   before_action :up_sale_products, only: [:show]
   before_action :cross_sale_products, only: [:show]
-  before_action :more_like_this, only: [:show]
+  before_action :similar_products, only: [:show]
 
   private
 
@@ -13,7 +13,7 @@ Spree::ProductsController.class_eval do
     @up_sale_products ||= SolrQuery.search(taxon_ids: @product.taxons.map(&:id))
   end
 
-  def more_like_this
-    @more_like_this ||= SolrQuery.more_like_this(@product)
+  def similar_products
+    @similar_products ||= SolrQuery.more_like_this(@product)
   end
 end

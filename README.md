@@ -12,7 +12,7 @@ Setup
 Add this extension to your Gemfile:
 
 ```ruby
-gem 'solidus_newsletter', github: 'jtapia/solidus_newsletter'
+gem 'solidus_solr', github: 'jtapia/solidus_solr'
 ```
 
 Then run:
@@ -27,6 +27,7 @@ Using the recommendations forms
 ```ruby
 <%= render partial: 'spree/shared/up_sale_products' %>
 <%= render partial: 'spree/shared/cross_sale_products' %>
+<%= render partial: 'spree/shared/similar_products' %>
 ```
 
 Testing
