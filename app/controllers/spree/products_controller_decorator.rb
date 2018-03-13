@@ -1,7 +1,7 @@
 Spree::ProductsController.class_eval do
   before_action :up_sale_products, only: [:show]
   before_action :cross_sale_products, only: [:show]
-  before_action :similar_products, only: [:show]
+  # before_action :similar_products, only: [:show]
 
   private
 

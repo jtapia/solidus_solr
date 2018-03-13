@@ -10,14 +10,14 @@
 
 <% if params[:q] %>
   <div data-hook="search_results">
-    <% if @hits.empty? %>
+    <% if @result.hits.empty? %>
       <h6 class="search-results-title"><%= t('spree.no_products_found') %></h6>
     <% else %>
-      <%= render partial: 'spree/shared/products', locals: { products: @hits, taxon: @taxon } %>
+      <%= render partial: 'spree/shared/products', locals: { products: @result.hits.map(&:instance), taxon: @taxon } %>
     <% end %>
   </div>
 <% else %>
   <div data-hook="homepage_products">
-    <%= render partial: 'spree/shared/products', locals: { products: @hits, taxon: @taxon } %>
+    <%= render partial: 'spree/shared/products', locals: { products: @result.hits.map(&:instance), taxon: @taxon } %>
   </div>
 <% end %>

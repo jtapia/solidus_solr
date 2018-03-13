@@ -54,7 +54,7 @@ describe Spree::ProductsController, search: true do
 
   describe '#similar_products' do
     context 'apply solr similar products' do
-      it 'returns 0 products' do
+      xit 'returns 0 products' do
         allow_any_instance_of(Sunspot::Search::MoreLikeThisSearch).to receive(:hits).and_return([])
 
         get :show, params: { id: product1.slug }
@@ -62,7 +62,7 @@ describe Spree::ProductsController, search: true do
         expect(assigns(:similar_products).hits).to be_empty
       end
 
-      it 'returns products' do
+      xit 'returns products' do
         allow_any_instance_of(Sunspot::Search::MoreLikeThisSearch).to receive(:hits).and_return([product2])
         get :show, params: { id: product1.slug }
 

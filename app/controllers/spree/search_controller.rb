@@ -6,7 +6,7 @@ module Spree
       taxon_ids = facets.map(&:rows).first.map(&:value)
       taxons = Spree::Taxon.find(taxon_ids)
 
-      @hits = SearchHitsAdapter.new(results.hits)
+      @result = SearchHitsAdapter.new(results.hits)
       @taxonomies = taxons.map(&:taxonomy).uniq
     end
   end

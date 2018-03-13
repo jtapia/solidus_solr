@@ -3,7 +3,7 @@ Spree::Product.class_eval do
   # You can add/remove the options that you need to the searchable list
   searchable do
     string :name, stored: true
-    text :description, stored: true, more_like_this: true do
+    text :description, stored: true do
       [name, description, meta_description, meta_keywords].join(' ')
     end
 
