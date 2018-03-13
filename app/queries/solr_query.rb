@@ -5,7 +5,7 @@ class SolrQuery
       with(:taxon_ids, options[:taxon_ids]) if options[:taxon_ids]
       with(:product_ids_bought_together, options[:product_ids_bought_together]) if options[:product_ids_bought_together]
       order_by :popularity, :desc
-      paginate page: options.fetch(:page, 1), per_page: options.fetch(:per_page, Spree::Config.products_per_page)
+      paginate page: options.fetch(:page, 1), per_page: options.fetch(:per_page, Spree::Config[:products_per_page])
 
       options.fetch(:facets, []).each do |facet_name|
         facet facet_name
