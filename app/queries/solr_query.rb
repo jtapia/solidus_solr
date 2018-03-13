@@ -1,5 +1,4 @@
 class SolrQuery
-
   def self.search(options)
     Sunspot.search(Spree::Product) do
       fulltext options[:q] if options[:q]

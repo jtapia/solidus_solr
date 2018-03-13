@@ -4,5 +4,8 @@ en:
       title: Up sale recommendations
     cross_sale:
       title: Cross sale recommendations
+    similar_products:
+      title: Similar products
     product:
       view_product: View Product
+    warning: Please be sure that you have already taxonomies

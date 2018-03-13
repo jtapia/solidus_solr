@@ -8,7 +8,8 @@ Spree::Product.class_eval do
     end
 
     integer :taxon_ids, stored: true, multiple: true do
-      taxons.map(&:id)
+      return Rails.logger.warn(Spree.t(:warning)) unless Spree::SolrConfig.taxonomies
+      taxons.where(taxonomy: Spree::Taxonomy.where(name: Spree::SolrConfig.taxonomies)).map(&:id)
     end
 
     integer :popularity, stored: true do
